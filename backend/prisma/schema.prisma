@@ -25,10 +25,13 @@ model User {
 
 model Artist {
   id        String   @id @default(uuid())
-  name      String
-  genre     String
+  name      String    @unique
+  genre     String?
   stockPrice Float   @default(1.0)
   createdAt DateTime @default(now())
+
+  lastMonthListeners Int?   
+  lastTotalViews     Int?
 
   investments Investment[]
 }
